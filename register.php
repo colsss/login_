@@ -40,25 +40,6 @@ if (isset($_POST['submit'])) {
 	} else {
 		echo 'Password did not match!';
 	}
-		
-	// 	if (!$result->num_rows > 0) {
-	// 		
-	// 		if ($result) {
-	// 			echo "<script>alert('Wow! User Registration Completed.')</script>";
-	// 			$username = "";
-	// 			$email = "";
-	// 			$_POST['password'] = "";
-	// 			$_POST['cpassword'] = "";
-	// 		} else {
-	// 			echo "<script>alert('Woops! Something Wrong Went.')</script>";
-	// 		}
-	// 	} else {
-	// 		echo "<script>alert('Woops! Email Already Exists.')</script>";
-	// 	}
-		
-	// } else {
-	// 	echo "<script>alert('Password Not Matched.')</script>";
-	// }
 }
 
 ?>
