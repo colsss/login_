@@ -12,9 +12,6 @@ if (isset($_POST['submit'])) {
 
 	session_start();
 
-
-
-	
 	$username = $_POST['username'];
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -78,5 +75,7 @@ if (isset($_POST['submit'])) {
 			<p class="login-register-text">Have an account? <a href="index.php">Login Here</a>.</p>
 		</form>
 	</div>
+
+	
 </body>
 </html>

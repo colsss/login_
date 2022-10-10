@@ -13,8 +13,6 @@ session_start();
 
 <!doctype html>
 <html lang="en">
-
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +23,7 @@ session_start();
 
   <body style="background-color: #edf2f9;">    
   <div class="container-fluid">
-    <div class="row">
+  <div class="row">
         <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e">
         <div class=" p-3 " style="width: 100%; height: 660px; background: #172a52; ">
     <a href="/" class="d-flex align-items-center pb-1 mb-3 link-dark text-decoration-none ">
@@ -89,6 +87,7 @@ session_start();
               </div>
             </li>
 
+
             <li class="nav-item mb-3">
               <a class="nav-link collapsed" style="color: white;" href="#setting-collapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
               <i class="fa fa-gear"></i> General Setting
@@ -122,18 +121,16 @@ session_start();
         <div class="col-9 offset-3" id="main">
         <header class="p-3 mb-3 border-bottom" >
     <div class="container">
-    
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <h2>Dashboard</h2>
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"> 
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
         </a>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 50%;" role="search">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 65%;" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
-        <div class="dropdown text-end" style="position: relative; left: 50%;"> 
+        <div class="dropdown text-end" style="position: relative; left: 65%;"> 
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
@@ -148,8 +145,9 @@ session_start();
       </div>
     </div>
   </header>
-            <!-- <h1>Dashboard</h1> -->
+            <h1>Dashboard</h1>
             <div class="row">
+
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
