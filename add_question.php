@@ -11,19 +11,35 @@ $target_dir = "uploads/";
 if(isset($_FILES["option1"]["name"])){
 
   $target_file = $target_dir . basename($_FILES["option1"]["name"]);
-  $uploadOk = 1;
+  $target_file1 = $target_dir . basename($_FILES["option2"]["name"]);
+  $target_file2 = $target_dir . basename($_FILES["option3"]["name"]);
+  $target_file3 = $target_dir . basename($_FILES["option4"]["name"]);
+  $target_file4 = $target_dir . basename($_FILES["answer"]["name"]);
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
 }
  
 if (isset($_POST['submit'])) {
 
 	session_start();
+  var_dump($_POST);
+ 
 
+
+  if(isset($_FILES["option1"]["name"])){
  // create for other options e.g .  $_FILES["option2"]["tmp_name"]
-   $path = $_FILES["option1"]["tmp_name"];
-    $imageData = file_get_contents($path);
-    move_uploaded_file($path,  $target_file);
-  
+   $path1 = $_FILES["option1"]["tmp_name"];
+   $path2 = $_FILES["option2"]["tmp_name"];
+   $path3 = $_FILES["option3"]["tmp_name"];
+   $path4 = $_FILES["option4"]["tmp_name"];
+   $path5 = $_FILES["answer"]["tmp_name"];
+    // $imageData = file_get_contents($path);
+    move_uploaded_file($path1,  $target_file);
+    move_uploaded_file($path2,  $target_file1);
+    move_uploaded_file($path3,  $target_file2);
+    move_uploaded_file($path4,  $target_file3);
+    move_uploaded_file($path5,  $target_file4);
+  }
 
   // if($check !== false) {
   //   echo "File is an image - " . $check["mime"] . ".";
@@ -33,19 +49,19 @@ if (isset($_POST['submit'])) {
   //   $uploadOk = 0;
   // }
 
-
-	$question_id = (empty($_FILES)) ? $_POST['questionid'] : $target_file;
+ 
   $question = (empty($_FILES)) ? $_POST['question']: $target_file;
   $option1 = (empty($_FILES)) ? $_POST['option1']: $target_file;
-  $option2 = (empty($_FILES)) ? $_POST['option2']: $target_file;
-  $option3= (empty($_FILES)) ? $_POST['option3']: $target_file;
-	$option4 = (empty($_FILES)) ? $_POST['option4']: $target_file;
-  $answer =  (empty($_FILES)) ?$_POST['answer']: $target_file;
+  $option2 = (empty($_FILES)) ? $_POST['option2']: $target_file1;
+  $option3= (empty($_FILES)) ? $_POST['option3']: $target_file2;
+	$option4 = (empty($_FILES)) ? $_POST['option4']: $target_file3;
+  $answer =  (empty($_FILES)) ?$_POST['answer']: $target_file4;
 
-    $sql = "INSERT INTO `questions` ( `question_id`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`) 
-      VALUES ('".$question_id."', '".$question."','".$option1."', '".$option2."', '".$option3."', '".$option4."', '".$answer."')";
+    $sql = "INSERT INTO `questions` (  `question`, `option1`, `option2`, `option3`, `option4`, `answer`) 
+      VALUES ('".$question."','".$option1."', '".$option2."', '".$option3."', '".$option4."', '".$answer."')";
     $result = mysqli_query($conn, $sql);
 
+    var_dump($result);
   } 
 
 
