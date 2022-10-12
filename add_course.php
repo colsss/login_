@@ -4,8 +4,6 @@ include 'config.php';
 
 error_reporting(0);
 
-
-
 if (isset($_POST['submit'])) {
 
 	session_start();
@@ -15,8 +13,8 @@ if (isset($_POST['submit'])) {
  $department = $_POST['department'];
 	$course_name = $_POST['courseName'];
 
-    $sql = "INSERT INTO `course_cat` (`department`, `course_name`) 
-      VALUES ('".$department."', '".$course_name."')";
+    $sql = "INSERT INTO `course_cat` (`course_name`, `department`) 
+      VALUES ('".$course_name."', '".$department."')";
     $result = mysqli_query($conn, $sql);
 
   }
@@ -27,7 +25,7 @@ if (isset($_POST['submit'])) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Add Questionnaire</title>
+    <title>Add Course</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -169,7 +167,22 @@ if (isset($_POST['submit'])) {
             <form class="form-inline">
               <label class="sr-only" for="courseName">Course name</label>
               
+              <select class="form-select" name="department" id="department" aria-label="Default select example">
+                <option selected>Select Department</option>
+                <option value="College of Arts and Social Sciences and Education">College of Arts and Social Sciences and Education</option>
+                <option value="College of Business">College of Business</option>
+                <option value="College of Computing and Information Sciences">College of Computing and Information Sciences</option>
+                <option value="College of Criminology">College of Criminology</option>
+                <option value="College of Education">College of Education</option>
+                <option value="College of Engineering">College of Engineering</option>
+                <option value="College of Hospitality Management">College of Hospitality Management</option>
+                <option value="College of Nursing">College of Nursing</option>        
+              </select>
+
+              <div class="mt-2S pt-1">
               <input type="text" class="form-control mb-2 mr-sm-2" id="courseName" name="courseName" placeholder="">
+              </div>
+
               <div class="mt-2S pt-1">
                               <input class="btn btn-primary btn" type="submit" value="Submit" name="submit"/>
                             </div>
