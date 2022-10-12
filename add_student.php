@@ -4,8 +4,6 @@ include 'config.php';
 
 error_reporting(0);
 
-$contact_number = "";
-
 if (isset($_POST['submit'])) {
 
 	session_start();
@@ -179,7 +177,7 @@ if (isset($_POST['submit'])) {
                   <div class="col-md-4 mb-4">
 
                     <div class="form-outline">
-                      <input type="text" id="lastName" name="lastName" class="form-control form-control" />
+                      <input type="text" id="lastName" name="lastName" class="form-control form-control" placeholder="Last Name" />
                       <label class="form-label" for="lastName">Last Name</label>
                     </div>
 
@@ -187,7 +185,7 @@ if (isset($_POST['submit'])) {
                   <div class="col-md-4 mb-4">
 
                     <div class="form-outline">
-                      <input type="text" id="firstName" name="firstName" class="form-control form-control" />
+                      <input type="text" id="firstName" name="firstName" class="form-control form-control" placeholder="First Name" />
                       <label class="form-label" for="firsttName">First Name</label>
                     </div>
 
@@ -196,7 +194,7 @@ if (isset($_POST['submit'])) {
                   <div class="col-md-4 mb-4">
 
                   <div class="form-outline">
-                    <input type="text" id="middleName" name="middleName" class="form-control form-control" />
+                    <input type="text" id="middleName" name="middleName" class="form-control form-control" placeholder="Middle Name" />
                     <label class="form-label" for="middleName">Middle Name</label>
                   </div>
 
@@ -207,7 +205,7 @@ if (isset($_POST['submit'])) {
                   <div class="col-md-6 mb-4 d-flex align-items-center">
 
                     <div class="form-outline datepicker w-100">
-                      <input type="text" id="address" name="address" class="form-control form-control" id="address" />
+                      <input type="text" id="address" name="address" class="form-control form-control" id="address" placeholder="Address"/>
                       <label for="address" class="form-label">Address</label>
                     </div>
                   </div>
@@ -239,21 +237,21 @@ if (isset($_POST['submit'])) {
                 <div class="row">
                   <div class="col-md-4 mb-4">
                     <div class="form-outline">
-                      <input type="email" id="emailAddress" name="email" class="form-control form-control" />
+                      <input type="email" id="emailAddress" name="email" class="form-control form-control" placeholder="Enter email" />
                       <label class="form-label" for="emailAddress">Email</label>
                     </div>
                   </div>
 
                   <div class="col-md-4 mb-4 ">
                     <div class="form-outline">
-                      <input type="" id="password" name="password" class="form-control form-control" />
+                      <input type="" id="password" name="password" class="form-control form-control" placeholder="Password"/>
                       <label class="form-label" for="password">Password</label>
                     </div>
                   </div>
                
                 <div class="col-md-4 mb-4">
                   <div class="form-outline">
-                  <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control" />
+                  <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control" placeholder="Phone number"/>
                   <label class="form-label" for="phoneNumber">Phone Number</label>
                   </div>
                 </div>
@@ -263,14 +261,14 @@ if (isset($_POST['submit'])) {
                   <h5>Course Choice</h5>
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
-                      <input type="" id="firstChoice" name="firstChoice" class="form-control form-control" />
+                      <input type="" id="firstChoice" name="firstChoice" class="form-control form-control" placeholder="Enter first choice" />
                       <label class="form-label" for="firstChoice">First Choice</label>
                     </div>
                 </div>
 
                   <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
-                      <input type="" id="secondChoice" name="secondChoice" class="form-control form-control" />
+                      <input type="" id="secondChoice" name="secondChoice" class="form-control form-control" placeholder="Enter second choice" />
                       <label class="form-label" for="secondChoice">Second Choice</label>
                     </div>
                   </div>

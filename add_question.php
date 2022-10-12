@@ -2,46 +2,45 @@
 
 include 'config.php';
 
-error_reporting(0);
+// error_reporting(0);
 
-$contact_number = "";
 $_Files = '';
 $target_dir = "uploads/";
 
-  // create for other options e.g .
-  // $target_file = $target_dir . basename($_FILES["option1"]["name"]); 
-$target_file = $target_dir . basename($_FILES["option1"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+if(isset($_FILES["option1"]["name"])){
+
+  $target_file = $target_dir . basename($_FILES["option1"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+}
+ 
 if (isset($_POST['submit'])) {
 
 	session_start();
-  var_dump($_POST);
 
-  // create for other options e.g .  $_FILES["option2"]["tmp_name"]
-  $path = $_FILES["option1"]["tmp_name"];
-  $imageData = file_get_contents($path);
+ // create for other options e.g .  $_FILES["option2"]["tmp_name"]
+   $path = $_FILES["option1"]["tmp_name"];
+    $imageData = file_get_contents($path);
+    move_uploaded_file($path,  $target_file);
+  
 
-  move_uploaded_file($path,  $target_file);
-
-
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
+  // if($check !== false) {
+  //   echo "File is an image - " . $check["mime"] . ".";
+  //   $uploadOk = 1;
+  // } else {
+  //   echo "File is not an image.";
+  //   $uploadOk = 0;
+  // }
 
 
-	$question_id = (empty($target_file)) ? $_POST['questionid'] : $target_file;
-  $question = (empty($target_file)) ? $_POST['question']: $target_file;
-  $option1 = (empty($target_file)) ? $_POST['option1']: $target_file;
-  $option2 = (empty($target_file)) ? $_POST['option2']: $target_file;
-  $option3= (empty($target_file)) ? $_POST['option3']: $target_file;
-	$option4 = (empty($target_file)) ? $_POST['option4']: $target_file;
-  $answer =  (empty($target_file)) ?$_POST['answer']: $target_file;
+	$question_id = (empty($_FILES)) ? $_POST['questionid'] : $target_file;
+  $question = (empty($_FILES)) ? $_POST['question']: $target_file;
+  $option1 = (empty($_FILES)) ? $_POST['option1']: $target_file;
+  $option2 = (empty($_FILES)) ? $_POST['option2']: $target_file;
+  $option3= (empty($_FILES)) ? $_POST['option3']: $target_file;
+	$option4 = (empty($_FILES)) ? $_POST['option4']: $target_file;
+  $answer =  (empty($_FILES)) ?$_POST['answer']: $target_file;
 
     $sql = "INSERT INTO `questions` ( `question_id`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`) 
       VALUES ('".$question_id."', '".$question."','".$option1."', '".$option2."', '".$option3."', '".$option4."', '".$answer."')";

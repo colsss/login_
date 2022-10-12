@@ -202,8 +202,8 @@ $(document).ready(function(){
 								<label for="selectAll"></label>
 							</span>
 						</th>
-						<th>Course Name</th>
-                        <th></th>
+						<th>Department</th>
+                        <th>Course Name</th>
                         <th></th>
                         <th></th>
 						<th>Actions</th>
@@ -220,8 +220,8 @@ $(document).ready(function(){
 					<label for="checkbox1"></label>
 				</span>
 			</td>
+			<td>' . $r['department'] . '</td>
 			<td>' . $r['course_name'] . '</td>
-			<td></td>
 			<td></td>
 			<td></td>
 			<td>

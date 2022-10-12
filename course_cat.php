@@ -11,17 +11,13 @@ if (isset($_POST['submit'])) {
 	session_start();
 
   //var_dump($_POST);
+  $department = $_POST['department'];
+	$course_name = $_POST['courseName'];
 
-	$last_name = $_POST['lastName'];
-  $first_name = $_POST['firstName'];
-  $middle_name = $_POST['middleName'];
-  $address= $_POST['address'];
-	$email = $_POST['email'];
-  $contact_number = $_POST['phoneNumber'];
-
-    $sql = "INSERT INTO `user_infos` ( `last_name`, `first_name`, `middle_name`, `address`, `email`, `contact_number`, `info`, `status`, `id_user_roles`) 
-      VALUES ('".$last_name."', '".$first_name."', '".$middle_name."', '".$address."', '".$email."', '".$contact_number."', '".$info."', '".$status."',  '".$id_user_roles."')";
+    $sql = "SELECT * FROM `course_cat` (`course_name`, `department`) 
+      VALUES ('".$course_name."', '".$department."')";
     $result = mysqli_query($conn, $sql);
+
 
   } 
 
@@ -171,22 +167,50 @@ if (isset($_POST['submit'])) {
 <div class="container mt-20 mb-20">
 	<div class="row">
 
+  <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+   Dropdown <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li class="dropdown">
+      <a href="#">One more dropdown</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li class="dropdown">
+          <a href="#">One more dropdown</a>
+          <ul class="dropdown-menu">
+          ...
+          </ul>
+        </li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+       </ul>
+    </li>
+    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
 
 <a href="add_question.php?course=accountacy">
 <div class="container  ">
 
 
-<?php
+<!-- <?php
 foreach ($result as $r){
     echo ' '.$r['course_name'].' <div class="card" style="background-color: red; margin-right: 2%; width: 18rem; float: left;">
     <img src="" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">'.$r['course_name'].'</h5>
+      <h5 class="card-title"> <?php echo '.$r['course_name'].' ?></h5> 
       <p class="card-text"></p>
     </div>
   </div> ';
 }
-?>
+?> -->
+
+
 <div class="card" style="margin-right: 2%; width: 18rem; float: left;">
   <img src="" class="card-img-top" alt="...">
   <div class="card-body">
