@@ -37,15 +37,20 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
-  <body style="background-color: #edf2f9;">      
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+</style>
+
+  <body style="background-color: #edf2f9;  font-family: 'Poppins', sans-serif;">    
   <div class="container-fluid">
-  <div class="row">
-        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e">
+    <div class="row">
+        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e; font-family: 'Poppins', sans-serif;">
         <div class=" p-3 " style="width: 100%; height: 660px; background: #172a52; ">
     <a href="/" class="d-flex align-items-center pb-1 mb-3 link-dark text-decoration-none ">
     <img src="https://www.spcf.edu.ph/images/spcf-logo.png" alt="Logo" style=" width=100%; height=100%;" >                
       <svg class="bi me-2" width="30" height="20"><use xlink:href="#bootstrap"></use></svg>
     </a>
+
     <ul class="list-unstyled ps-0  mb-3">
     <li class="mb-3">
       <a href="welcome.php" 
@@ -142,11 +147,11 @@ if (isset($_POST['submit'])) {
                     <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                     </a>
 
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 40%;" role="search">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 35%;" role="search">
                     <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
                     </form>
 
-                    <div class="dropdown text-end" style="position: relative; left: 40%;"> 
+                    <div class="dropdown text-end" style="position: relative; left: 35%;"> 
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
@@ -166,37 +171,8 @@ if (isset($_POST['submit'])) {
 
 <div class="container mt-20 mb-20">
 	<div class="row">
-
-  <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
-   Dropdown <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li class="dropdown">
-      <a href="#">One more dropdown</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li class="dropdown">
-          <a href="#">One more dropdown</a>
-          <ul class="dropdown-menu">
-          ...
-          </ul>
-        </li>
-        <li><a href="#">Something else here</a></li>
-        <li><a href="#">Separated link</a></li>
-       </ul>
-    </li>
-    <li><a href="#">Something else here</a></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-
 <a href="add_question.php?course=accountacy">
 <div class="container  ">
-
 
 <!-- <?php
 foreach ($result as $r){
@@ -212,7 +188,7 @@ foreach ($result as $r){
 
 
 <div class="card" style="margin-right: 2%; width: 18rem; float: left;">
-  <img src="" class="card-img-top" alt="...">
+  <!-- <img src="" class="card-img-top" alt="..."> -->
   <div class="card-body">
     <h5 class="card-title">Accountancy</h5>
     <p class="card-text"></p>
@@ -222,7 +198,7 @@ foreach ($result as $r){
 </a>
 <a href="add_question.php">
 <div class="card" style=" margin-right: 2%;  width: 18rem;  float: left;">
-  <img src="" class="card-img-top" alt="...">
+  <!-- <img src="" class="card-img-top" alt="..."> -->
   <div class="card-body">
     <h5 class="card-title">Nursing</h5>
     <p class="card-text"></p>
@@ -232,7 +208,7 @@ foreach ($result as $r){
 </a>
 <a href="add_question.php">
 <div class="card" style=" margin-right: 2%; width: 18rem; float: left;">
-  <img src="g" class="card-img-top" alt="...">
+  <!-- <img src="g" class="card-img-top" alt="..."> -->
   <div class="card-body">
   <h5 class="card-title">Information Technology</h5>
     <p class="card-text"></p>
@@ -244,7 +220,7 @@ foreach ($result as $r){
 </div>
 <div class="container  ">
 <div class="card" style=" margin-right: 2%; margin-top: 1%; width: 18rem; float: left;">
-  <img src="" class="card-img-top" alt="...">
+  <!-- <img src="" class="card-img-top" alt="..."> -->
   <div class="card-body">
     <h5 class="card-title">Engineering</h5>
     <p class="card-text"></p>
@@ -254,7 +230,7 @@ foreach ($result as $r){
 </a>
 <a href="add_question.php">
 <div class="card" style=" margin-right: 2%; margin-top: 1%; width: 18rem;  float: left;">
-  <img src="" class="card-img-top" alt="...">
+  <!-- <img src="" class="card-img-top" alt="..."> -->
   <div class="card-body">
     <h5 class="card-title">Business Administration</h5>
     <p class="card-text"></p>
@@ -264,7 +240,7 @@ foreach ($result as $r){
 </a>
 <a href="add_question.php">
 <div class="card" style="  margin-right: 2%; margin-top: 1%; width: 18rem; float: left;">
-  <img src="" class="card-img-top" alt="...">
+  <!-- <img src="" class="card-img-top" alt="..."> -->
   <div class="card-body">
     <h5 class="card-title">Hospitality Management</h5>
     <p class="card-text"></p>
@@ -274,7 +250,8 @@ foreach ($result as $r){
 </div>
 </a>
 
-</div>
+
+
 
 
 <footer class="page-footer font-small blue" style="padding-left: 0px;">

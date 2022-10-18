@@ -32,15 +32,18 @@ if (isset($_POST['submit'])) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<title>Login Form </title>
 </head>
 <body>
 	<div class="container">
+	<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(images/bg-1.jpg);">
+			      </div>
 		<form action="" method="POST" class="login-email">
 			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
 			<div class="input-group">

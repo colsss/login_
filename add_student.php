@@ -13,6 +13,7 @@ if (isset($_POST['submit'])) {
 	$last_name = $_POST['lastName'];
   $first_name = $_POST['firstName'];
   $middle_name = $_POST['middleName'];
+  $gender = $_POST['gender'];
   $address= $_POST['address'];
 	$email = $_POST['email'];
   $password = $_POST['password'];
@@ -20,8 +21,8 @@ if (isset($_POST['submit'])) {
   $first_choice = $_POST['firstChoice'];
   $second_choice = $_POST['secondChoice'];
 
-    $sql = "INSERT INTO `user_infos` ( `last_name`, `first_name`, `middle_name`, `address`, `email`, `password`, `contact_number`, `first_choice`, `second_choice`, `info`, `status`, `id_user_roles`) 
-      VALUES ('".$last_name."', '".$first_name."', '".$middle_name."', '".$address."', '".$email."', '".$password."', '".$contact_number."', '".$first_choice."', '".$second_choice."',  'student', '".$status."',  '".$id_user_roles."')";
+    $sql = "INSERT INTO `user_infos` ( `last_name`, `first_name`, `middle_name`, `gender`, `address`, `email`, `password`, `contact_number`, `first_choice`, `second_choice`, `info`, `status`, `id_user_roles`) 
+      VALUES ('".$last_name."', '".$first_name."', '".$middle_name."', '".$gender."','".$address."', '".$email."', '".$password."', '".$contact_number."', '".$first_choice."', '".$second_choice."',  'student', '".$status."',  '".$id_user_roles."')";
     $result = mysqli_query($conn, $sql);
   } 
 ?>
@@ -36,15 +37,20 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
-  <body style="background-color: #edf2f9;">      
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+</style>
+
+  <body style="background-color: #edf2f9;  font-family: 'Poppins', sans-serif;">    
   <div class="container-fluid">
-  <div class="row">
-        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e">
+    <div class="row">
+        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e; font-family: 'Poppins', sans-serif;">
         <div class=" p-3 " style="width: 100%; height: 660px; background: #172a52; ">
     <a href="/" class="d-flex align-items-center pb-1 mb-3 link-dark text-decoration-none ">
     <img src="https://www.spcf.edu.ph/images/spcf-logo.png" alt="Logo" style=" width=100%; height=100%;" >                
       <svg class="bi me-2" width="30" height="20"><use xlink:href="#bootstrap"></use></svg>
     </a>
+    
     <ul class="list-unstyled ps-0  mb-3">
     <li class="mb-3">
       <a href="welcome.php" 
@@ -142,11 +148,11 @@ if (isset($_POST['submit'])) {
                   <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                 </a>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 40%;" role="search">
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 35%;" role="search">
                   <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
                 </form>
 
-                <div class="dropdown text-end" style="position: relative; left: 40%;"> 
+                <div class="dropdown text-end" style="position: relative; left: 35%;"> 
                 
                   <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -214,20 +220,20 @@ if (isset($_POST['submit'])) {
                     <h6 class="mb-2 pb-1">Gender: </h6>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                        value="option1" checked />
+                      <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                        value="Female" checked />
                       <label class="form-check-label" for="femaleGender">Female</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                        value="option2" />
+                      <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                        value="Male" />
                       <label class="form-check-label" for="maleGender">Male</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                        value="option3" />
+                      <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                        value="Other" />
                       <label class="form-check-label" for="otherGender">Other</label>
                     </div>
 

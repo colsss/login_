@@ -8,6 +8,7 @@ session_start();
 
     $sql = "SELECT * FROM course_cat ";
     $result = mysqli_query($conn, $sql);	
+	
 ?>
 
 <!doctype html>
@@ -24,10 +25,14 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-  <body style="background-color: #edf2f9;">       
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+</style>
+
+  <body style="background-color: #edf2f9;  font-family: 'Poppins', sans-serif;">    
   <div class="container-fluid">
-  <div class="row">
-        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e">
+    <div class="row">
+        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e; font-family: 'Poppins', sans-serif;">
         <div class=" p-3 " style="width: 100%; height: 660px; background: #172a52; ">
     <a href="/" class="d-flex align-items-center pb-1 mb-3 link-dark text-decoration-none ">
     <img src="https://www.spcf.edu.ph/images/spcf-logo.png" alt="Logo" style=" width=100%; height=100%;" >                
@@ -129,11 +134,11 @@ session_start();
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
         </a>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 40%;" role="search">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 35%;" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
-        <div class="dropdown text-end" style="position: relative; left:40%;"> 
+        <div class="dropdown text-end" style="position: relative; left:33%;"> 
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
@@ -225,8 +230,8 @@ $(document).ready(function(){
 			<td></td>
 			<td></td>
 			<td>
-				<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Edit"></i></a>
-				<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
+				<a href="update_course.php" class="edit" name="edit" ><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Edit"></i></a>
+				<a href="#deleteEmployeeModal" class="delete" name="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
 			</td>
 		</tr>
 	</tbody>';
@@ -235,17 +240,7 @@ $(document).ready(function(){
 	?>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
-				</ul>
-			</div>
+				
 		</div>
 	</div>        
 </div>
@@ -259,22 +254,24 @@ $(document).ready(function(){
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				</div>
 				<div class="modal-body">					
-					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" required="">
-					</div>
-					<div class="form-group">
-						<label>Email</label>
-						<input type="email" class="form-control" required="">
-					</div>
-					<div class="form-group">
-						<label>Address</label>
-						<textarea class="form-control" required=""></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required="">
-					</div>					
+				<form class="form-inline">
+              <label class="sr-only" for="courseName">Course name</label>
+              
+              <select class="form-select" name="department" id="department" aria-label="Default select example">
+                <option selected>Select Department</option>
+                <option value="College of Arts and Social Sciences and Education">College of Arts and Social Sciences and Education</option>
+                <option value="College of Business">College of Business</option>
+                <option value="College of Computing and Information Sciences">College of Computing and Information Sciences</option>
+                <option value="College of Criminology">College of Criminology</option>
+                <option value="College of Education">College of Education</option>
+                <option value="College of Engineering">College of Engineering</option>
+                <option value="College of Hospitality Management">College of Hospitality Management</option>
+                <option value="College of Nursing">College of Nursing</option>        
+              </select>
+
+              <div class="mt-2S pt-1">
+              <input type="text" class="form-control mb-2 mr-sm-2" id="courseName" name="courseName" placeholder="">
+              </div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
