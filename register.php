@@ -2,7 +2,7 @@
 
 include 'config.php';
 
-error_reporting(0);
+// error_reporting(0);
 
 // if (isset($_SESSION['username'])) {
 //     header("Location: index.php");
@@ -12,6 +12,8 @@ if (isset($_POST['submit'])) {
 
 	session_start();
 
+	$first_name = $_POST['firstname'];
+	$last_name = $_POST['lastname'];
 	$username = $_POST['username'];
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -23,8 +25,8 @@ if (isset($_POST['submit'])) {
 		$result = mysqli_query($conn, $sql);
 
 		if($result->num_rows == '0') {
-			$sql1 = "INSERT INTO `users` (`id`, `username`, `email`, `password`) 
-				VALUES (NULL, '".$username."', '".$email."', '".$password."')";
+			$sql1 = "INSERT INTO `users` ( `first_name`, `last_name`, `username`, `email`, `password`) 
+				VALUES ( '".$first_name."', '".$last_name."','".$username."', '".$email."', '".$password."')";
 			$result1 = mysqli_query($conn, $sql1);
 
 			if($result1) {
@@ -57,6 +59,12 @@ if (isset($_POST['submit'])) {
 	<div class="container">
 		<form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+			<div class="input-group">
+				<input type="text" placeholder="First name" name="firstname" value="<?php echo $first_name; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="text" placeholder="Last name" name="lastname" value="<?php echo $last_name; ?>" required>
+			</div>
 			<div class="input-group">
 				<input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
 			</div>
