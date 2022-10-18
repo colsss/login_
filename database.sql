@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 18, 2022 at 07:19 AM
+-- Generation Time: Oct 18, 2022 at 07:48 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -225,20 +225,11 @@ CREATE TABLE `user_infos` (
 --
 
 INSERT INTO `user_infos` (`id`, `first_name`, `last_name`, `middle_name`, `gender`, `address`, `email`, `password`, `contact_number`, `first_choice`, `second_choice`, `info`, `status`, `id_user_roles`) VALUES
-(1, 'minerva', 'v', 'vadel', '', '', '', '', '', '', '', 'student', 2, 101),
-(2, 'taguro', 'brothers', '', '', '', '', '', '', '', '', 'student', 1, 107),
-(3, 'asdf', 'asdf', '', '', '', 'asdf', '', 'asdf', '', '', 'asdf', 11, 1),
 (10, 'Carizza Colean', 'Escoto', 'Zamora', '', 'San Simon', 'cols@gmail.com', '', '09752724011', '', '', '', 0, 0),
-(11, 'Carizza Colean', 'Escoto', 'Zamora', '', 'San Simon', 'cols@gmail.com', '', '09752724011', '', '', '', 0, 0),
-(12, 'Carizza Colean', 'Escoto', 'Zamora', '', 'San Simon', 'cols@gmail.com', '', '09752724011', '', '', '', 0, 0),
 (37, 'Jeffrey', 'Mamangun', 'Zamora', '', 'Mabalacat City', 'miccapots11@gmal.com', '', '09752724011', '', '', 'student', 0, 0),
 (41, 'Micca Ellah', 'Mamangun', 'Escoto', '', 'Mabalacat City Pampanga', 'miccapots11@gmail.com', '', '09123456789', 'BS Accountancy', 'BS Education', 'student', 0, 0),
 (43, 'Kenneth', 'Estacio', 'Lazatin', '', 'Telebastagan, Sanfernandon, Pampanga', 'kenneth@gmail.com', '123456', '09987654321', 'BS Engineering', 'BS Psychology', 'student', 0, 0),
 (44, 'Carizza Colean', 'Escoto', '', '', 'San Simon, Pampanga', 'cols@gmail.com', 'qwerty', '09752724011', 'BS Accountancy', 'BS Psychology', 'student', 0, 0),
-(45, '', '', '', '', '', '', '', '', '', '', 'student', 0, 0),
-(46, '', '', '', '', '', '', '', '', '', '', 'student', 0, 0),
-(47, 'Khatlean Nicole', 'Bucu', 'Escoto', '', 'San Simon, Pampanga', 'khatleannicole@gmail.com', 'asdfgh', '0987654321', 'BS Education', 'BS Accountancy', 'student', 0, 0),
-(48, 'Khatlean Nicole', 'Bucu', 'Escoto', '', 'San Simon, Pampanga', 'khatleannicole@gmail.com', 'asdfgh', '0987654321', 'BS Education', 'BS Accountancy', 'student', 0, 0),
 (49, 'Khatlean Nicole', 'Bucu', 'Escoto', 'Female', 'San Simon, Pampanga', 'khatleannicole@gmail.com', 'asdfgh', '0987654321', 'BS Education', 'BS Accountancy', 'student', 0, 0);
 
 --
