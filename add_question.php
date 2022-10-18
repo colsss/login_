@@ -49,17 +49,18 @@ if (isset($_POST['submit'])) {
   //   $uploadOk = 0;
   // }
 
- 
-  $question = (empty($_FILES)) ? $_POST['question']: $target_file;
+  $category = $_POST['category'];
+  $question = $_POST['question'];
   $option1 = (empty($_FILES)) ? $_POST['option1']: $target_file;
   $option2 = (empty($_FILES)) ? $_POST['option2']: $target_file1;
   $option3= (empty($_FILES)) ? $_POST['option3']: $target_file2;
 	$option4 = (empty($_FILES)) ? $_POST['option4']: $target_file3;
   $answer =  (empty($_FILES)) ?$_POST['answer']: $target_file4;
 
-    $sql = "INSERT INTO `questions` (  `question`, `option1`, `option2`, `option3`, `option4`, `answer`) 
-      VALUES ('".$question."','".$option1."', '".$option2."', '".$option3."', '".$option4."', '".$answer."')";
+    $sql = "INSERT INTO `questions` ( `category`, `question`, `option1`, `option2`, `option3`, `option4`, `answer`) 
+      VALUES ('".$category."','".$question."','".$option1."', '".$option2."', '".$option3."', '".$option4."', '".$answer."')";
     $result = mysqli_query($conn, $sql);
+
 
     var_dump($result);
   } 
@@ -80,11 +81,14 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
-  <body style="background-color: #edf2f9;">  
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+</style>
+
+  <body style="background-color: #edf2f9;  font-family: 'Poppins', sans-serif;">    
   <div class="container-fluid">
     <div class="row">
-    <div class="row">
-        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e">
+        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e; font-family: 'Poppins', sans-serif;">
         <div class=" p-3 " style="width: 100%; height: 660px; background: #172a52; ">
     <a href="/" class="d-flex align-items-center pb-1 mb-3 link-dark text-decoration-none ">
     <img src="https://www.spcf.edu.ph/images/spcf-logo.png" alt="Logo" style=" width=100%; height=100%;" >                
@@ -174,9 +178,9 @@ if (isset($_POST['submit'])) {
                 </ul>
               </div>
             </li>
-    </ul>
-  </div>
+          </ul>
         </div>
+      </div>
 
 
     <div class="col-9 offset-3" id="main">
@@ -188,11 +192,11 @@ if (isset($_POST['submit'])) {
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 40%;" role="search">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 32%;" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
-        <div class="dropdown text-end" style="position: relative; left: 40%;"> 
+        <div class="dropdown text-end" style="position: relative; left: 32%;"> 
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
@@ -210,15 +214,15 @@ if (isset($_POST['submit'])) {
 
       
       <div class="row">
-        <div class="container  ">
-          
+        <div class="container  ">   
           <div class="card" style="margin-right: 2%; margin-top: 1%; width: 18rem;  float: left;">
             <div class="card-body">
-              <h5 class="card-title">Abstract</h5>
+              <h5 class="card-title" name= "abstract" >Abstract</h5>
               <p class="card-text"></p>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#abstract">
+              <button type="button"  value="abstract" name="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#abstract">
           Add Question
           </button>
+
 
           <!-- Modal -->
           <div class="modal fade" id="abstract" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -232,15 +236,15 @@ if (isset($_POST['submit'])) {
               <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
                 <div class="row">
 
-                  <div class="col-md-12 mb-12>
+                  <div class="col-md-12 mb-12 mt-2S pt-3>
                     <div class="form-outline">
-                  <!-- todo: change to input textfield -->
-                  <input type="file" class="form-control" id="customFile1" name="question"/>
-                  <label class="form-label" for="customFile">Question</label>
+                  <input type="hidden" id="category" name="category" value="Abstract">
+                  <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+                  <textarea class="form-control" id="question" name="question"  rows="3" style="height= 200px;"></textarea>
                     </div>
                   </div>
 
-                  <div class="col-md-12 mb-12">
+                  <div class="col-md-12 mb-12 mt-2S pt-3">
                 <div class="form-outline">
                 <input type="file" class="form-control" id="customFile2" name="option1"/>
                   <label class="form-label" for="customFile">Choice 1</label>
@@ -310,12 +314,13 @@ if (isset($_POST['submit'])) {
                   <div class="col-md-12 mb-12>
 
                     <div class="form-outline">
-                      <input type="text" id="question" name="question" class="form-control form-control" />
-                      <label class="form-label" for="question">Question</label>
+                    <input type="hidden" id="category" name="category" value="Multiple Choice">
+                    <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+                  <textarea class="form-control" id="question" name="question" rows="3" style="height= 200px;"></textarea>
                     </div>
                   </div>
 
-                  <div class="col-md-12 mb-12">
+                  <div class="col-md-12 mb-12 mt-2S pt-3">
                     <div class="form-outline">
                       <input type="text" id="option1" name="option1" class="form-control form-control" />
                       <label class="form-label" for="option1">Option 1</label>
@@ -371,12 +376,12 @@ if (isset($_POST['submit'])) {
           <div class="card-body">
             <h5 class="card-title">Identification</h5>
             <p class="card-text"></p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Identification">
           Add Question
         </button>
 
 <!-- Modal -->
-          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="Identification" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -384,19 +389,18 @@ if (isset($_POST['submit'])) {
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-              
-              <h5 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Add Question</h5>
               <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="row">
-                  <div class="col-md-12 mb-12>
 
+                  <div class="col-md-12 mb-12>
                     <div class="form-outline">
-                      <input type="text" id="question" name="question" class="form-control form-control" />
-                      <label class="form-label" for="question">Question</label>
+                    <input type="hidden" id="category" name="category" value="Identification">
+                    <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+                  <textarea class="form-control" id="question" name="question" rows="3" style="height= 200px;"></textarea>
                     </div>
                   </div>
 
-                  <div class="col-md-12 mb-12">
+                  <div class="col-md-12 mb-12 mt-2S pt-3">
                     <div class="form-outline">
                       <input type="text" id="option1" name="option1" class="form-control form-control" />
                       <label class="form-label" for="option1">Option 1</label>
@@ -435,8 +439,6 @@ if (isset($_POST['submit'])) {
                 </div>
               </form>
             </div>
-    
-
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -448,6 +450,216 @@ if (isset($_POST['submit'])) {
   </div>
 </div>
 </div>
+
+<div class="row">
+        <div class="container  ">   
+        
+        <div class="card" style="margin-right: 2%; margin-top: 1%; width: 18rem;  float: left;">
+          <div class="card-body">
+            <h5 class="card-title">True or False</h5>
+            <p class="card-text"></p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ToF">
+         Add Question
+        </button>
+
+<!-- Modal -->
+          <div class="modal fade" id="ToF" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">True or False</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+            <div class="modal-body">
+              <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="row">
+                  <div class="col-md-12 mb-12>
+
+                    <div class="form-outline">
+                    <input type="hidden" id="category" name="category" value="True or False">
+                    <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+                  <textarea class="form-control" id="question" name="question" rows="3" style="height= 200px;"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-12 mt-2S pt-3">
+                    <div class="form-outline">
+                      <input type="text" id="option1" name="option1" class="form-control form-control" />
+                      <label class="form-label" for="option1">Option 1</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-12">
+                  <div class="form-outline">
+                    <input type="text" id="option2" name="option2" class="form-control form-control" />
+                    <label class="form-label" for="option2">Option 2</label>
+                  </div>
+                </div>
+
+                <div class="col-md-12 mb-12">
+                <div class="form-outline">
+                  <input type="text" id="answer" name="answer" class="form-control form-control" />
+                  <label class="form-label" for="answer">Answer</label>
+                </div>
+
+                <div class="mt-2S pt-1">
+                  <input class="btn btn-primary btn" type="submit" value="Submit" name="submit"/>
+                </div>
+              </form>
+            </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+
+        <div class="card" style="margin-right: 2%; margin-top: 1%; width: 18rem;  float: left;">
+          <div class="card-body">
+            <h5 class="card-title">Fill in the blanks</h5>
+            <p class="card-text"></p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Fillintheblanks">
+         Add Question
+        </button>
+
+<!-- Modal -->
+          <div class="modal fade" id="Fillintheblanks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Fill in the blank</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+            <div class="modal-body">
+              <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="row">
+                  <div class="col-md-12 mb-12>
+
+                    <div class="form-outline">
+                    <input type="hidden" id="category" name="category" value="Fill in the blank">
+                    <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+                  <textarea class="form-control" id="question" name="question" rows="3" style="height= 200px;"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-12 mt-2S pt-3">
+                    <div class="form-outline">
+                      <input type="text" id="option1" name="option1" class="form-control form-control" />
+                      <label class="form-label" for="option1">Option 1</label>
+                    </div>
+                  </div>
+
+                <div class="col-md-12 mb-12">
+                <div class="form-outline">
+                  <input type="text" id="answer" name="answer" class="form-control form-control" />
+                  <label class="form-label" for="answer">Answer</label>
+                </div>
+
+                <div class="mt-2S pt-1">
+                  <input class="btn btn-primary btn" type="submit" value="Submit" name="submit"/>
+                </div>
+              </form>
+            </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+
+
+        <div class="card" style="margin-right: 2%; margin-top: 1%; width: 18rem;  float: left;">
+          <div class="card-body">
+            <h5 class="card-title">Essay</h5>
+            <p class="card-text"></p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Essay">
+          Add Question
+        </button>
+
+<!-- Modal -->
+          <div class="modal fade" id="Essay" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Essay Question</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+              <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="row">
+
+                  <div class="col-md-12 mb-12>
+                    <div class="form-outline">
+                    <input type="hidden" id="category" name="category" value="Essay">
+                    <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+                  <textarea class="form-control" id="question" name="question" rows="3" style="height= 200px;"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 mb-12 mt-2S pt-3">
+                    <div class="form-outline">
+                      <input type="text" id="option1" name="option1" class="form-control form-control" />
+                      <label class="form-label" for="option1">Option 1</label>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-12 mb-12">
+                    <div class="form-outline">
+                      <input type="text" id="option2" name="option2" class="form-control form-control" />
+                      <label class="form-label" for="option2"></label>
+                    </div>Option 2
+                </div>
+
+
+                <div class="col-md-12 mb-12">
+                  <div class="form-outline">
+                    <input type="text" id="option3" name="option3" class="form-control form-control" />
+                    <label class="form-label" for="option3">Option 3</label>
+                  </div>
+                </div>
+
+                <div class="col-md-12 mb-12">
+                  <div class="form-outline">
+                    <input type="text" id="option4" name="option4" class="form-control form-control" />
+                    <label class="form-label" for="option4">Option 4</label>
+                  </div>
+                </div> -->
+
+                <div class="col-md-12 mb-12">
+                <div class="form-outline">
+                  <input type="text" id="answer" name="answer" class="form-control form-control" />
+                  <label class="form-label" for="answer">Answer</label>
+                </div>
+                <div class="mt-2S pt-1">
+                  <input class="btn btn-primary btn" type="submit" value="Submit" name="submit"/>
+                </div>
+              </form>
+            </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+
+
 
 <footer class="page-footer font-small blue" style="padding-left: 0px;">
         <!-- Copyright -->

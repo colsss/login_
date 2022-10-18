@@ -24,10 +24,14 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-  <body style="background-color: #edf2f9;">       
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+</style>
+
+  <body style="background-color: #edf2f9;  font-family: 'Poppins', sans-serif;">    
   <div class="container-fluid">
-  <div class="row">
-        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e">
+    <div class="row">
+        <div class="col-3  position-fixed" id="sticky-sidebar font-color: #f6c23e; font-family: 'Poppins', sans-serif;">
         <div class=" p-3 " style="width: 100%; height: 660px; background: #172a52; ">
     <a href="/" class="d-flex align-items-center pb-1 mb-3 link-dark text-decoration-none ">
     <img src="https://www.spcf.edu.ph/images/spcf-logo.png" alt="Logo" style=" width=100%; height=100%;" >                
@@ -130,11 +134,11 @@ session_start();
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
         </a>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 40%;" role="search">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="position: relative; left: 33%;" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
-        <div class="dropdown text-end" style="position: relative; left: 38%;"> 
+        <div class="dropdown text-end" style="position: relative; left: 31%;"> 
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
@@ -185,16 +189,16 @@ $(document).ready(function(){
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<h2><b>Students</b> List</h2>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons"></i> <span>Add New Student</span></a>
 						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons"></i> <span>Delete</span></a>						
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover" style="width: 100%;">
 				<thead>
 					<tr>
 						<th>
@@ -203,7 +207,8 @@ $(document).ready(function(){
 								<label for="selectAll"></label>
 							</span>
 						</th>
-						<th>Name</th>
+						<th>Fullname</th>
+						<th>Gender</th>
 						<th>Address</th>
 						<th>Email</th>
 						<th>Password</th>
@@ -224,9 +229,10 @@ $(document).ready(function(){
 					<label for="checkbox1"></label>
 				</span>
 			</td>
-			<td>' . $r['last_name'] . ' , ' . $r['first_name'] . ' ' . $r['middle_name'] . '</td>
+			<td>' . $r['last_name'] . ', ' . $r['first_name'] . ' ' . $r['middle_name'] . '</td>
 			<td>' . $r['address'] . '</td>
 			<td>' . $r['email'] . '</td>
+			<td>' . $r['gender'] . '</td>
 			<td>' . $r['password'] . '</td>
 			<td>' . $r['contact_number'] . '</td>
 			<td>' . $r['first_choice'] . '</td>

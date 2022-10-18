@@ -10,12 +10,18 @@ if (isset($_POST['submit'])) {
 
  var_dump($_POST);
 
- $department = $_POST['department'];
-	$course_name = $_POST['courseName'];
+//  $department = $_POST['department'];
+// 	$course_name = $_POST['courseName'];
 
-    $sql = "INSERT INTO `course_cat` (`course_name`, `department`) 
-      VALUES ('".$course_name."', '".$department."')";
-    $result = mysqli_query($conn, $sql);
+//     $sql = "INSERT INTO `course_cat` (`course_name`, `department`) 
+//       VALUES ('".$course_name."', '".$department."')";
+//     $result = mysqli_query($conn, $sql);
+
+    
+    $id = $_GET['id'];
+    $sql = mysqli_query($db, "SELECT * FROM course_cat WHERE id=$id ");
+    $result =  mysqli_fetch_array($result);    		
+
 
   }
   ?> 
@@ -133,6 +139,7 @@ if (isset($_POST['submit'])) {
         <div class="col-9 offset-3" id="main">
         <header class="p-3 mb-3 border-bottom" >
     <div class="container">
+
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <h2>Add Course</h2>
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
@@ -158,6 +165,9 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </header>
+
+
+
            
             <div class="row">
             <section class="vh-100 gradient-custom">
@@ -169,11 +179,12 @@ if (isset($_POST['submit'])) {
             <h2 class="mb-2 pb-2 ">Course</h2>
             <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>">
            
+            
             <form class="form-inline">
               <label class="sr-only" for="courseName">Course name</label>
               
-              <select class="form-select" name="department" id="department" aria-label="Default select example">
-                <option selected>Select Department</option>
+              <select class="form-select" value="<?php echo $row['department'] ?>" name="department" id="department" aria-label="Default select example">
+                <option >Select Department</option>
                 <option value="College of Arts and Social Sciences and Education">College of Arts and Social Sciences and Education</option>
                 <option value="College of Business">College of Business</option>
                 <option value="College of Computing and Information Sciences">College of Computing and Information Sciences</option>
@@ -185,7 +196,7 @@ if (isset($_POST['submit'])) {
               </select>
 
               <div class="mt-2S pt-1">
-              <input type="text" class="form-control mb-2 mr-sm-2" id="courseName" name="courseName" placeholder="">
+              <input type="text" class="form-control mb-2 mr-sm-2" value="<?php echo $row['course_name'] ?>" id="courseName" name="courseName" placeholder="">
               </div>
 
               <div class="mt-2S pt-1">
