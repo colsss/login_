@@ -2,29 +2,25 @@
 
 include 'config.php';
 
-error_reporting(0);
-
-if (isset($_POST['submit'])) {
+// error_reporting(0);
 
 	session_start();
 
- var_dump($_POST);
+  function generatePassword ($length = 8)
+{
+  $genpassword = "";
+  $possible = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $i = 0;
+  while ($i < $length) {
+    $char = substr($possible, mt_rand(0, strlen($possible)-1), 1);
+    if (!strstr($genpassword, $char)) {
+      $genpassword .= $char;
+      $i++;
+    }
+  }
+  return $genpassword;
+}
 
-	$last_name = $_POST['lastName'];
-  $first_name = $_POST['firstName'];
-  $middle_name = $_POST['middleName'];
-  $gender = $_POST['gender'];
-  $address= $_POST['address'];
-	$email = $_POST['email'];
-  $password = $_POST['password'];
-  $contact_number = $_POST['phoneNumber'];
-  $first_choice = $_POST['firstChoice'];
-  $second_choice = $_POST['secondChoice'];
-
-    $sql = "INSERT INTO `user_infos` ( `last_name`, `first_name`, `middle_name`, `gender`, `address`, `email`, `password`, `contact_number`, `first_choice`, `second_choice`, `info`, `status`, `id_user_roles`) 
-      VALUES ('".$last_name."', '".$first_name."', '".$middle_name."', '".$gender."','".$address."', '".$email."', '".$password."', '".$contact_number."', '".$first_choice."', '".$second_choice."',  'student', '".$status."',  '".$id_user_roles."')";
-    $result = mysqli_query($conn, $sql);
-  } 
 ?>
 
 <!doctype html>
@@ -170,6 +166,8 @@ if (isset($_POST['submit'])) {
         </header>
 
 <!-- <h2>Add New Student</h2> -->
+<!-- <?php echo $_SERVER['PHP_SELF']; ?> -->
+
 <div class="row">
   <section class="vh-100 gradient-custom">
     <div class="container  ">
@@ -178,7 +176,7 @@ if (isset($_POST['submit'])) {
           <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
             <div class="card-body p-4 p-md-5">
               <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">Registration Form</h3>
-              <form  method="POST" class="" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+              <form  method="POST" class="" action="send_email.php">
                 <div class="row">
                   <div class="col-md-4 mb-4">
 
@@ -250,7 +248,7 @@ if (isset($_POST['submit'])) {
 
                   <div class="col-md-4 mb-4 ">
                     <div class="form-outline">
-                      <input type="" id="password" name="password" class="form-control form-control" placeholder="Password"/>
+                      <input type="" id="password" name="password" class="form-control form-control" value="<?php echo generatePassword(); ?>" readonly/>
                       <label class="form-label" for="password">Password</label>
                     </div>
                   </div>
@@ -279,6 +277,9 @@ if (isset($_POST['submit'])) {
                     </div>
                   </div>
                 </div>
+
+                <input type="hidden" id="subject" name="subject" class="form-control form-control" />
+                <input type="hidden" id="message" name="message" class="form-control form-control" />
 
                 <div class="mt-2S pt-1">
                   <input class="btn btn-primary btn" type="submit" value="Submit" name="submit"/>
