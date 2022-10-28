@@ -2,11 +2,15 @@
 
 include 'config.php';
 
-error_reporting(0);
+// error_reporting(0);
 
 // if (isset($_SESSION['username'])) {
 //     header("Location: index.php");
 // }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['submit'])) {
 
@@ -20,26 +24,84 @@ if (isset($_POST['submit'])) {
 	$cpassword = md5($_POST['cpassword']);
 
 	
-	if ($password == $cpassword) {
-		$sql = "SELECT * FROM users WHERE email='$email'";
-		$result = mysqli_query($conn, $sql);
 
-		if($result->num_rows == '0') {
-			$sql1 = "INSERT INTO `users` ( `first_name`, `last_name`, `username`, `email`, `password`) 
-				VALUES ( '".$first_name."', '".$last_name."','".$username."', '".$email."', '".$password."')";
+			$sql1 = "INSERT INTO `users` ( `first_name`, `last_name`, `username`, `email`, `password`, `otp`, `verified_date` ) 
+				VALUES ( '".$first_name."', '".$last_name."','".$username."', '".$email."', '".$password."', '".$otp."', NULL)";
 			$result1 = mysqli_query($conn, $sql1);
 
-			if($result1) {
-				echo 'Registration Complete!';
-			} else {
-				echo 'User Already Exist!!';
-			}
-
-		}
-	} else {
-		echo 'Password did not match!';
-	}
 }
+?>
+
+<?php 
+
+include 'config.php';
+
+// error_reporting(0);	
+
+
+
+if (isset($_POST['submit'])) {
+
+	session_start();
+	var_dump($_POST);
+
+	//Load Composer's autoloader
+	require_once __DIR__.'\Exception.php';
+	require __DIR__.'\PHPMailer.php';
+	require __DIR__.'\SMTP.php';
+
+	$mail = new PHPMailer(true);
+ 
+	        try {
+	            //Enable verbose debug output
+	            $mail->SMTPDebug = 0;//SMTP::DEBUG_SERVER;
+	 
+	            //Send using SMTP
+	            $mail->isSMTP();
+	 
+	            //Set the SMTP server to send through
+	            $mail->Host = 'smtp.gmail.com';
+	 
+	            //Enable SMTP authentication
+	            $mail->SMTPAuth = true;
+	 
+	            //SMTP username
+	            $mail->Username = 'carizzacoleanescoto@gmail.com';
+	 
+	            //SMTP password
+	            $mail->Password = 'vsjvewdwayhwgmdx';
+	 
+	            //Enable TLS encryption;
+	            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+	 
+	            //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+	            $mail->Port = 587;
+	 
+	            //Recipients
+	            $mail->setFrom('carizzacoleanescoto@gmail.com', 'Colean');
+	 
+	            //Add a recipient
+	            $mail->addAddress($email, $name);
+	 
+	            //Set email format to HTML
+	            $mail->isHTML(true);
+	 
+	            $otp = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+	 
+	            $mail->Subject = 'Email verification';
+	            $mail->Body    = '<p>Good day, ' . $first_name . ' your verification code is: <b style="font-size: 30px;">' . $otp . '</b></p>';
+	 
+	            $mail->send();
+	             echo 'Message has been sent';
+
+
+
+header("Location: email_verification.php?email=" . $email);
+            exit();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+	}
 
 ?>
 
@@ -74,9 +136,9 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<input type="password" placeholder="Password" name="password" value="" required>
             </div>
-            <div class="input-group">
+            <!-- <div class="input-group">
 				<input type="password" placeholder="Confirm Password" name="cpassword" value="" required>
-			</div>
+			</div> -->
 			<div class="input-group">
 				<button name="submit" class="btn">Register</button>
 			</div>
